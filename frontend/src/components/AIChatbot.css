@@ -1,0 +1,97 @@
+
+.quick-questions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+  padding: 12px;
+  background: #f1faF1;
+  border-radius: 12px;
+}
+
+.quick-questions button {
+  flex: 1 1 140px;
+  padding: 10px 12px;
+  border: 1px solid #c8e6c9;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #286b32;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-questions button:hover {
+  background: #2e7d32;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.quick-questions button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .quick-questions {
+    gap: 8px;
+  }
+
+  .quick-questions button {
+    flex: 1 1 calc(50% - 8px);
+    font-size: 12px;
+    padding: 9px 6px;
+  }
+}
+
+.follow-ups {
+  margin-top: 14px;
+  padding: 12px;
+  background: #f1f8f2;
+  border-radius: 12px;
+}
+
+.follow-ups strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #286b32;
+  font-size: 14px;
+}
+
+.follow-up-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.follow-up-btn {
+  border: 1px solid #2e7d32;
+  border-radius: 20px;
+  padding: 8px 12px;
+  background: white;
+  color: #286b32;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.follow-up-btn:hover {
+  background: #2e7d32;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.follow-up-btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .follow-up-buttons {
+    flex-direction: column;
+  }
+
+  .follow-up-btn {
+    width: 100%;
+    text-align: left;
+  }
+}

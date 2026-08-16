@@ -1,0 +1,3710 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #eef7ee;
+  color: #222;
+}
+
+.navbar {
+  background: #2e7d32;
+  color: white;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo h2 {
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero h1 {
+  font-size: 60px;
+  color: #1b5e20;
+  margin: 15px 0;
+}
+
+.hero h2 {
+  color: #388e3c;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  max-width: 750px;
+  line-height: 1.7;
+  color: #555;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.primary,
+.secondary {
+  padding: 13px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.primary {
+  background: #2e7d32;
+  color: white;
+  border: 2px solid #2e7d32;
+}
+
+.secondary {
+  background: white;
+  color: #2e7d32;
+  border: 2px solid #2e7d32;
+}
+
+.features {
+  padding: 70px 30px;
+  text-align: center;
+  background: #f8fff8;
+}
+
+.features > h2 {
+  color: #1b5e20;
+  font-size: 32px;
+  margin-bottom: 35px;
+}
+
+.feature-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.feature-card {
+  background: white;
+  padding: 30px 20px;
+  min-height: 220px;
+  border-radius: 20px;
+  border-top: 5px solid #2e7d32;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.feature-card h1 {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.feature-card h3 {
+  color: #35783b;
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.weather-card {
+  width: 90%;
+  max-width: 520px;
+  margin: 60px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.weather-top h2 {
+  color: #35783b;
+  margin-bottom: 10px;
+}
+
+.weather-top h3 {
+  color: #666;
+}
+
+.weather-temp {
+  font-size: 50px;
+  color: #1b5e20;
+  margin: 25px 0;
+}
+
+.weather-info {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.weather-box {
+  background: #f1fff1;
+  padding: 15px 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.weather-box strong {
+  color: #1b5e20;
+}
+
+.weather-card > button {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+
+.soil-section {
+  padding: 70px 30px;
+  background: #eef9ee;
+  text-align: center;
+}
+
+.soil-section > h2 {
+  color: #1b5e20;
+  font-size: 32px;
+  margin-bottom: 35px;
+}
+
+.soil-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.soil-card {
+  background: white;
+  padding: 30px 15px;
+  min-height: 220px;
+  border-radius: 20px;
+  border-top: 5px solid #2e7d32;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.soil-icon {
+  font-size: 45px;
+}
+
+.soil-card h3 {
+  color: #35783b;
+  margin: 12px 0;
+}
+
+.soil-card h1 {
+  color: #1b5e20;
+  margin: 10px 0;
+}
+
+.soil-status {
+  display: inline-block;
+  background: #d9f3df;
+  color: #35783b;
+  padding: 7px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.crop-section {
+  padding: 70px 20px;
+  background: #f8fff8;
+}
+
+.crop-section > h2 {
+  text-align: center;
+  color: #1b5e20;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+footer {
+  background: #1b5e20;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+@media (max-width: 700px) {
+
+  .navbar {
+    padding: 0 15px;
+  }
+
+  .logo h2 {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+  }
+
+  .hero {
+    min-height: 520px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .soil-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .weather-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .weather-box {
+    width: 180px;
+  }
+}
+/* =========================================================
+   CROP RECOMMENDATION FORM
+   ========================================================= */
+
+.crop-form {
+  max-width: 900px;
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+}
+
+.crop-form input {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  border: 1px solid #d9e2d9;
+
+  border-radius: 10px;
+
+  background: white;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+.crop-form input:focus {
+  border-color: #2e7d32;
+
+  box-shadow:
+    0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.crop-button {
+  display: block;
+
+  width: 250px;
+
+  margin: 18px auto 0;
+
+  padding: 13px 20px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #2e7d32;
+
+  color: white;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.crop-button:hover {
+  background: #1b5e20;
+
+  transform: translateY(-2px);
+}
+
+.crop-result {
+  max-width: 700px;
+
+  margin: 30px auto 0;
+
+  padding: 25px;
+
+  background: #e8f5e9;
+
+  border: 1px solid #c8e6c9;
+
+  border-radius: 15px;
+
+  text-align: center;
+}
+
+.crop-result h3 {
+  margin: 0 0 10px;
+
+  color: #2e7d32;
+}
+
+.crop-result p {
+  margin: 0;
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+  color: #1b5e20;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .crop-form {
+    grid-template-columns: 1fr;
+  }
+
+  .crop-button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+}
+/* =========================================================
+   AUTH / LOGIN PAGE
+   ========================================================= */
+
+.auth-page {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 30px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eef9ed,
+      #f8fff7
+    );
+
+  box-sizing: border-box;
+}
+
+.auth-card {
+  width: 100%;
+
+  max-width: 430px;
+
+  background: #ffffff;
+
+  padding: 40px 35px;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 15px 45px
+    rgba(46, 125, 50, 0.15);
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+.auth-logo {
+  width: 70px;
+
+  height: 70px;
+
+  margin: 0 auto 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e8f5e9;
+
+  font-size: 38px;
+}
+
+.auth-card h1 {
+  margin: 0;
+
+  color: #1b5e20;
+
+  font-size: 32px;
+}
+
+.auth-subtitle {
+  margin: 6px 0 25px;
+
+  color: #6b7d6c;
+
+  font-size: 14px;
+}
+
+.auth-card h2 {
+  margin: 0;
+
+  color: #2e7d32;
+
+  font-size: 24px;
+}
+
+.auth-welcome {
+  color: #777;
+
+  font-size: 14px;
+
+  margin-bottom: 25px;
+}
+
+.auth-field {
+  text-align: left;
+
+  margin-bottom: 18px;
+}
+
+.auth-field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #285d2c;
+
+  font-weight: 600;
+
+  font-size: 14px;
+}
+
+.auth-field input {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d7e4d8;
+
+  border-radius: 11px;
+
+  outline: none;
+
+  font-size: 15px;
+
+  background: #fbfffb;
+
+  transition: 0.2s ease;
+}
+
+.auth-field input:focus {
+  border-color: #2e7d32;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(46, 125, 50, 0.1);
+}
+
+.auth-button {
+  width: 100%;
+
+  padding: 14px;
+
+  margin-top: 5px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background: #2e7d32;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.auth-button:hover {
+  background: #1b5e20;
+
+  transform: translateY(-1px);
+}
+
+.auth-button:disabled {
+  opacity: 0.7;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+.auth-error {
+  margin-bottom: 18px;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  background: #ffebee;
+
+  color: #c62828;
+
+  font-size: 13px;
+
+  text-align: left;
+}
+
+.auth-divider {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 25px 0;
+
+  color: #999;
+
+  font-size: 12px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+
+  flex: 1;
+
+  height: 1px;
+
+  background: #e1e1e1;
+}
+
+.auth-register {
+  margin: 0 0 10px;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+.auth-register-button {
+  display: block;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 13px;
+
+  border-radius: 11px;
+
+  border: 2px solid #2e7d32;
+
+  color: #2e7d32;
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.auth-register-button:hover {
+  background: #e8f5e9;
+}
+
+.auth-home-link {
+  display: inline-block;
+
+  margin-top: 22px;
+
+  color: #4f6f52;
+
+  text-decoration: none;
+
+  font-size: 14px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+  .auth-page {
+    padding: 20px 15px;
+  }
+
+  .auth-card {
+    padding: 32px 22px;
+
+    border-radius: 20px;
+  }
+
+  .auth-card h1 {
+    font-size: 28px;
+  }
+
+}
+/* =========================================================
+   AI FARMING ASSISTANT
+   ========================================================= */
+
+.ai-chat {
+  max-width: 900px;
+  margin: 40px auto 0;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(46,125,50,0.10);
+  border: 1px solid #e1eee1;
+}
+
+.chat-box {
+  max-height: 420px;
+  overflow-y: auto;
+  margin: 20px 0;
+  padding: 15px;
+  background: #f5fbf5;
+  border-radius: 15px;
+}
+
+.chat-item {
+  margin-bottom: 15px;
+}
+
+.user-message,
+.ai-message {
+  padding: 13px 16px;
+  border-radius: 14px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.user-message {
+  background: #2e7d32;
+  color: white;
+  margin-left: 15%;
+}
+
+.ai-message {
+  background: white;
+  color: #285d2d;
+  border: 1px solid #dcebdc;
+  margin-right: 10%;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+}
+
+.ai-chat input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #cfe0cf;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: #fbfffb;
+}
+
+.ai-chat input:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46,125,50,0.1);
+}
+
+.ai-chat button {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 11px 18px;
+  margin: 8px 5px 0 0;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.ai-chat button:hover {
+  background: #1b5e20;
+}
+
+.copy-btn {
+  background: #e8f5e9 !important;
+  color: #2e7d32 !important;
+  font-size: 12px;
+  padding: 7px 12px !important;
+}
+
+@media (max-width: 700px) {
+  .ai-chat {
+    width: 92%;
+    margin: 30px auto 0;
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .user-message {
+    margin-left: 5%;
+  }
+
+  .ai-message {
+    margin-right: 5%;
+  }
+
+  .chat-box {
+    max-height: 350px;
+  }
+}
+
+
+/* ===== Smart Irrigation ===== */
+
+.irrigation-section {
+  padding: 70px 30px;
+  background: #f8fff8;
+  text-align: center;
+}
+
+.irrigation-section h2 {
+  color: #1b5e20;
+  font-size: 32px;
+  margin-bottom: 35px;
+}
+
+.irrigation-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.irrigation-card {
+  background: white;
+  padding: 30px 20px;
+  min-height: 280px;
+  border-radius: 20px;
+  border-top: 5px solid #2e7d32;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.irrigation-icon {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.irrigation-card h3 {
+  color: #35783b;
+  margin: 12px 0;
+}
+
+.moisture-value {
+  color: #1b5e20;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.moisture-bar {
+  width: 100%;
+  height: 14px;
+  background: #e0eee0;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.moisture-fill {
+  height: 100%;
+  background: #2e7d32;
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+.irrigation-card label {
+  display: block;
+  margin: 15px 0 7px;
+  color: #35783b;
+  font-weight: 500;
+}
+
+.irrigation-card input[type="range"] {
+  width: 100%;
+}
+
+.irrigation-card select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cde2cd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: white;
+}
+
+.pump-status {
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+.pump-on {
+  background: #d9f5dc;
+  color: #1b5e20;
+}
+
+.pump-off {
+  background: #ffe0e0;
+  color: #b71c1c;
+}
+
+.irrigation-button {
+  width: 100%;
+  padding: 11px;
+  margin: 6px 0;
+  border: none;
+  border-radius: 8px;
+  background: #2e7d32;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.irrigation-button:hover {
+  background: #1b5e20;
+}
+
+.auto-button {
+  background: #388e3c;
+}
+
+.irrigation-info {
+  margin-top: 15px;
+  padding: 12px;
+  background: #f0faf0;
+  border-radius: 10px;
+  color: #35783b;
+}
+
+.irrigation-alert {
+  max-width: 800px;
+  margin: 30px auto 0;
+  padding: 15px;
+  background: #fff3cd;
+  color: #856404;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .irrigation-section {
+    padding: 50px 20px;
+  }
+
+  .irrigation-section h2 {
+    font-size: 27px;
+  }
+
+  .irrigation-container {
+    grid-template-columns: 1fr;
+  }
+
+  .irrigation-card {
+    min-height: auto;
+  }
+}
+
+/* ================================
+   AGRINOVA AI — PREMIUM UI
+   ================================ */
+
+:root {
+  --green: #247a35;
+  --green-dark: #155d27;
+  --green-light: #e9f8ec;
+  --mint: #f3fff5;
+  --text: #17351d;
+  --muted: #64756a;
+  --white: #ffffff;
+  --shadow: 0 12px 35px rgba(24, 91, 39, 0.10);
+  --shadow-hover: 0 22px 45px rgba(24, 91, 39, 0.18);
+}
+
+/* ---------- GLOBAL ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(87, 190, 105, 0.10), transparent 28%),
+    radial-gradient(circle at 90% 20%, rgba(75, 170, 95, 0.08), transparent 25%),
+    linear-gradient(180deg, #f7fff8 0%, #eefaf0 100%);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ---------- NAVBAR ---------- */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(36, 126, 53, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 25px rgba(0, 70, 20, 0.14);
+  transition: all 0.3s ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 12px 32px rgba(0, 70, 20, 0.22);
+}
+
+.nav-links a {
+  position: relative;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-links a:hover {
+  transform: translateY(-2px);
+  opacity: 0.82;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 0;
+  height: 2px;
+  background: white;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ---------- BUTTONS ---------- */
+
+button,
+.primary,
+.secondary {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+button:hover,
+.primary:hover,
+.secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(36, 126, 53, 0.25);
+}
+
+button:active,
+.primary:active,
+.secondary:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.primary {
+  background: linear-gradient(135deg, #247a35, #36a34b) !important;
+  border: none !important;
+  box-shadow: 0 7px 18px rgba(36, 126, 53, 0.20);
+}
+
+.primary:hover {
+  background: linear-gradient(135deg, #1c692c, #2d923f) !important;
+}
+
+.secondary {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(81, 183, 98, 0.16), transparent 45%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(79, 180, 98, 0.10);
+  filter: blur(5px);
+  top: 8%;
+  left: -100px;
+  animation: floatOrb 7s ease-in-out infinite;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(51, 146, 70, 0.08);
+  right: -80px;
+  bottom: 10%;
+  animation: floatOrb 8s ease-in-out infinite reverse;
+}
+
+.hero h1 {
+  animation: heroTitle 0.8s ease both;
+}
+
+.hero h2 {
+  animation: heroSubtitle 0.9s ease 0.1s both;
+}
+
+.hero p {
+  animation: heroSubtitle 0.9s ease 0.2s both;
+}
+
+/* ---------- FEATURE CARDS ---------- */
+
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(36, 126, 53, 0.10);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.35s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.55),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.015);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(36, 126, 53, 0.25);
+}
+
+.feature-card:hover::before {
+  left: 140%;
+}
+
+/* ---------- WEATHER ---------- */
+
+.weather-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(36, 126, 53, 0.12);
+  box-shadow: var(--shadow);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.weather-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-hover);
+}
+
+.weather-temp {
+  animation: temperaturePulse 3s ease-in-out infinite;
+}
+
+.weather-box {
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.weather-box:hover {
+  transform: translateY(-4px);
+  background: #effff2 !important;
+}
+
+/* ---------- SOIL CARDS ---------- */
+
+.soil-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(36, 126, 53, 0.10);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.soil-card:hover {
+  transform: translateY(-9px);
+  box-shadow: var(--shadow-hover);
+}
+
+.soil-icon {
+  display: inline-block;
+  transition: transform 0.45s ease;
+}
+
+.soil-card:hover .soil-icon {
+  transform: scale(1.18) rotate(-7deg);
+}
+
+.soil-status {
+  transition: transform 0.25s ease;
+}
+
+.soil-card:hover .soil-status {
+  transform: scale(1.06);
+}
+
+/* ---------- CROP RECOMMENDATION ---------- */
+.crop-recommendation-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(36, 126, 53, 0.12);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.35s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.35s ease;
+}
+
+.crop-recommendation-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.30),
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+
+.crop-recommendation-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.crop-recommendation-card:hover::after {
+  transform: translateX(100%);
+}
+
+.crop-progress-fill {
+  animation: progressGrow 1.2s ease-out both;
+  transform-origin: left;
+}
+
+.crop-badge {
+  transition: transform 0.25s ease;
+}
+
+.crop-recommendation-card:hover .crop-badge {
+  transform: scale(1.08);
+}
+/* ---------- IRRIGATION ---------- */
+
+.irrigation-card,
+.smart-irrigation-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.irrigation-card:hover,
+.smart-irrigation-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ---------- INPUTS ---------- */
+
+input,
+select,
+textarea {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #35a34b !important;
+  box-shadow: 0 0 0 4px rgba(53, 163, 75, 0.12);
+  transform: translateY(-1px);
+}
+
+/* ---------- DISEASE DETECTION ---------- */
+
+.disease-card,
+.plant-disease-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.disease-card:hover,
+.plant-disease-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ---------- AI ASSISTANT ---------- */
+
+.ai-assistant,
+.assistant-card {
+  border: 1px solid rgba(36, 126, 53, 0.10);
+  box-shadow: var(--shadow);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.ai-assistant:hover,
+.assistant-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+/* ---------- FOOTER ---------- */
+
+footer {
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.7),
+    transparent
+  );
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-25px) translateX(15px);
+  }
+}
+
+@keyframes heroTitle {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroSubtitle {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes temperaturePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+
+@keyframes progressGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+
+  .navbar {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .hero {
+    padding: 35px 18px !important;
+  }
+
+  .hero h1 {
+    font-size: 42px !important;
+  }
+
+  .hero h2 {
+    font-size: 25px !important;
+  }
+
+  .feature-grid,
+  .soil-grid,
+  .crop-recommendation-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .feature-card,
+  .soil-card,
+  .crop-recommendation-card {
+    transform: none;
+  }
+
+  .feature-card:hover,
+  .soil-card:hover,
+  .crop-recommendation-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .weather-card {
+    width: calc(100% - 30px) !important;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-buttons button {
+    width: 100%;
+  }
+}
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================
+   AGRINOVA AI — PREMIUM ANIMATION LAYER
+   ========================================= */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Premium page entrance */
+body {
+  animation: pageFade 0.8s ease-out;
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 8px 25px rgba(27, 94, 32, 0.18);
+}
+
+/* Navigation links */
+.nav-links a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+  width: 70%;
+}
+
+/* Hero animation */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  animation: heroTitle 0.9s ease-out;
+}
+
+.hero h2 {
+  animation: heroSubtitle 1s ease-out;
+}
+
+.hero p {
+  animation: heroText 1.1s ease-out;
+}
+
+.hero-buttons {
+  animation: heroButtons 1.2s ease-out;
+}
+
+@keyframes heroTitle {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroSubtitle {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroText {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroButtons {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Premium buttons */
+.primary,
+.secondary,
+.hero-buttons button,
+button {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.primary:hover,
+.secondary:hover,
+.hero-buttons button:hover,
+button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.25);
+}
+
+.primary:active,
+.secondary:active,
+.hero-buttons button:active,
+button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Feature cards */
+.feature-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-radius 0.35s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(27, 94, 32, 0.16);
+  border-radius: 22px;
+}
+
+.feature-card h1,
+.feature-card h2,
+.feature-card h3 {
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover h1,
+.feature-card:hover h2,
+.feature-card:hover h3 {
+  transform: translateY(-2px);
+}
+
+/* Weather card */
+.weather-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+  animation: floatingCard 4s ease-in-out infinite;
+}
+
+.weather-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(27, 94, 32, 0.18);
+}
+
+@keyframes floatingCard {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Soil cards */
+.soil-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.soil-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(27, 94, 32, 0.16);
+}
+
+.soil-icon {
+  transition: transform 0.4s ease;
+}
+
+.soil-card:hover .soil-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+/* Crop recommendation cards */
+.crop-recommendation-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.crop-recommendation-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(27, 94, 32, 0.16);
+}
+
+/* Progress bars */
+.crop-progress-fill {
+  transform-origin: left;
+  animation: progressGrow 1.2s ease-out;
+}
+
+@keyframes progressGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Section headings */
+.features > h2,
+.soil-section > h2,
+.crop-section > h2 {
+  animation: headingReveal 0.8s ease-out;
+}
+
+@keyframes headingReveal {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Inputs */
+input,
+select {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Disease detection */
+input[type="file"] {
+  transition: all 0.25s ease;
+}
+
+input[type="file"]:hover {
+  transform: translateY(-2px);
+}
+
+/* AI Assistant */
+.ai-assistant,
+.assistant-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.ai-assistant:hover,
+.assistant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(27, 94, 32, 0.14);
+}
+
+/* Footer */
+footer {
+  transition: background 0.3s ease;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 700px) {
+  .feature-card:hover,
+  .soil-card:hover,
+  .crop-recommendation-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .weather-card {
+    animation-duration: 5s;
+  }
+}
+
+
+/* =========================================
+   AGRINOVA AI — PREMIUM VISUAL POLISH V2
+   ========================================= */
+
+:root {
+  --green-dark: #14532d;
+  --green: #2e7d32;
+  --green-light: #e9f8ed;
+  --mint: #f4fcf5;
+}
+
+/* Premium background */
+body {
+  background:
+    radial-gradient(circle at 8% 10%, rgba(76, 175, 80, 0.12), transparent 25%),
+    radial-gradient(circle at 92% 25%, rgba(139, 195, 74, 0.10), transparent 28%),
+    linear-gradient(180deg, #f8fff9 0%, #eefaf0 48%, #f8fff9 100%);
+  overflow-x: hidden;
+}
+
+/* Soft animated background atmosphere */
+.hero,
+.features,
+.weather-card,
+.soil-section,
+.crop-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before,
+.soil-section::before,
+.crop-section::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(76, 175, 80, 0.08);
+  filter: blur(2px);
+  animation: floatingBlob 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero::before {
+  top: -90px;
+  left: -80px;
+}
+
+.soil-section::before {
+  right: -100px;
+  top: 30px;
+  animation-delay: 1.5s;
+}
+
+.crop-section::before {
+  left: -100px;
+  bottom: 20px;
+  animation-delay: 3s;
+}
+
+@keyframes floatingBlob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(25px, 18px) scale(1.12);
+  }
+}
+
+/* Make content stay above decorative effects */
+.hero > *,
+.features > *,
+.weather-card > *,
+.soil-section > *,
+.crop-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* HERO — stronger entrance */
+.hero h1 {
+  animation: premiumTitle 1s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.hero h2 {
+  animation: premiumSubtitle 1s 0.15s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.hero p {
+  animation: premiumText 1s 0.3s ease-out both;
+}
+
+.hero-buttons {
+  animation: premiumButtons 0.8s 0.45s ease-out both;
+}
+
+@keyframes premiumTitle {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.94);
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes premiumSubtitle {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes premiumText {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes premiumButtons {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* FEATURE CARDS — stagger effect */
+.feature-card {
+  animation: cardReveal 0.8s ease-out both;
+  backdrop-filter: blur(8px);
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.18s; }
+.feature-card:nth-child(3) { animation-delay: 0.26s; }
+.feature-card:nth-child(4) { animation-delay: 0.34s; }
+.feature-card:nth-child(5) { animation-delay: 0.42s; }
+.feature-card:nth-child(6) { animation-delay: 0.50s; }
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.015);
+  box-shadow:
+    0 20px 40px rgba(46, 125, 50, 0.18),
+    0 0 0 1px rgba(76, 175, 80, 0.08);
+}
+
+/* WEATHER — floating glass effect */
+.weather-card {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation:
+    weatherEntrance 0.9s ease-out both,
+    weatherFloat 5s 1s ease-in-out infinite;
+}
+
+@keyframes weatherEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes weatherFloat {
+  0%, 100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -7px;
+  }
+}
+
+.weather-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(46, 125, 50, 0.12);
+}
+
+/* SOIL CARDS */
+.soil-card {
+  animation: soilReveal 0.8s ease-out both;
+  transition:
+    transform 0.35s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.35s ease;
+}
+
+.soil-card:nth-child(1) { animation-delay: 0.10s; }
+.soil-card:nth-child(2) { animation-delay: 0.20s; }
+.soil-card:nth-child(3) { animation-delay: 0.30s; }
+.soil-card:nth-child(4) { animation-delay: 0.40s; }
+
+@keyframes soilReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotateX(8deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.soil-card:hover {
+  transform: translateY(-9px) scale(1.025);
+  box-shadow: 0 20px 38px rgba(46, 125, 50, 0.17);
+}
+
+.soil-icon {
+  display: inline-block;
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* CROP RECOMMENDATION */
+.crop-recommendation-card {
+  animation: cropReveal 0.8s ease-out both;
+}
+
+.crop-recommendation-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.crop-recommendation-card:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.crop-recommendation-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes cropReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.crop-recommendation-card:hover {
+  transform: translateY(-9px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(46, 125, 50, 0.18);
+}
+
+/* Animated recommendation bars */
+.crop-progress-fill {
+  transform-origin: left center;
+  animation: cropProgress 1.5s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes cropProgress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* IRRIGATION CARDS */
+.irrigation-card,
+.irr-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.irrigation-card:hover,
+.irr-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 35px rgba(46, 125, 50, 0.16);
+}
+
+/* BUTTON PREMIUM EFFECT */
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.28),
+    transparent
+  );
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+
+button:hover::after {
+  left: 130%;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 22px rgba(46, 125, 50, 0.24);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* AI ASSISTANT */
+.ai-assistant,
+.assistant-card {
+  animation: assistantReveal 0.9s ease-out both;
+}
+
+@keyframes assistantReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* INPUT FOCUS */
+input,
+select {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+input:focus,
+select:focus {
+  transform: translateY(-2px);
+  border-color: #2e7d32 !important;
+  box-shadow:
+    0 0 0 3px rgba(46, 125, 50, 0.10),
+    0 6px 15px rgba(46, 125, 50, 0.08);
+}
+
+/* Section heading animation */
+.features > h2,
+.soil-section > h2,
+.crop-section > h2 {
+  animation: sectionHeading 0.9s ease-out both;
+}
+
+@keyframes sectionHeading {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+  .feature-card:hover,
+  .soil-card:hover,
+  .crop-recommendation-card:hover {
+    transform: translateY(-5px) scale(1.01);
+  }
+
+  .weather-card {
+    animation:
+      weatherEntrance 0.9s ease-out both,
+      weatherFloat 6s 1s ease-in-out infinite;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* =========================================
+   AGRINOVA AI — PREMIUM UI V2
+   ========================================= */
+
+/* Smooth global experience */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ---------- PREMIUM NAVBAR ---------- */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(27, 94, 32, 0.15);
+  transition: all 0.3s ease;
+}
+
+.nav-links a {
+  position: relative;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 0;
+  height: 2px;
+  border-radius: 10px;
+  background: #ffffff;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.nav-links a:hover::after {
+  width: 80%;
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(76, 175, 80, 0.10);
+  filter: blur(4px);
+  z-index: -1;
+  animation: floatingBlob 7s ease-in-out infinite;
+}
+
+.hero::before {
+  top: -100px;
+  left: -80px;
+}
+
+.hero::after {
+  right: -90px;
+  bottom: -100px;
+  animation-delay: -3s;
+}
+
+@keyframes floatingBlob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(20px, -15px) scale(1.08);
+  }
+}
+
+.hero h1 {
+  animation: heroTitle 0.8s ease-out both;
+}
+
+.hero h2 {
+  animation: heroSubtitle 0.9s ease-out 0.15s both;
+}
+
+.hero p {
+  animation: heroSubtitle 0.9s ease-out 0.3s both;
+}
+
+.hero-buttons {
+  animation: heroSubtitle 0.9s ease-out 0.45s both;
+}
+
+@keyframes heroTitle {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroSubtitle {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- PREMIUM BUTTONS ---------- */
+
+button,
+.primary,
+.secondary {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+button:hover,
+.primary:hover,
+.secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(27, 94, 32, 0.22);
+}
+
+button:active,
+.primary:active,
+.secondary:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ---------- FEATURE CARDS ---------- */
+
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.45),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.65s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 18px 35px rgba(27, 94, 32, 0.16);
+  border-color: rgba(46, 125, 50, 0.35);
+}
+
+.feature-card:hover::before {
+  left: 140%;
+}
+
+/* ---------- SOIL CARDS ---------- */
+
+.soil-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.soil-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 16px 32px rgba(27, 94, 32, 0.17);
+}
+
+/* ---------- WEATHER ---------- */
+
+.weather-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.weather-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(27, 94, 32, 0.18);
+}
+
+/* ---------- CROP RECOMMENDATION ---------- */
+
+.crop-recommendation-card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.crop-recommendation-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 35px rgba(27, 94, 32, 0.16);
+}
+
+/* ---------- PREMIUM INPUTS ---------- */
+
+input,
+select,
+textarea {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2e7d32 !important;
+  box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.10);
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+  transition: background 0.3s ease;
+}
+
+/* ---------- ACCESSIBILITY ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+
+  .feature-card:hover,
+  .soil-card:hover,
+  .crop-recommendation-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .hero::before,
+  .hero::after {
+    width: 180px;
+    height: 180px;
+  }
+
+}
+
+
+/* =========================================
+   AGRINOVA PREMIUM HERO V3
+   ========================================= */
+
+.premium-hero {
+  position: relative;
+  min-height: 650px;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 90px 25px 70px;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(129,199,132,.22), transparent 30%),
+    radial-gradient(circle at 85% 70%, rgba(165,214,167,.25), transparent 30%),
+    linear-gradient(135deg, #f7fff7 0%, #e8f7e9 50%, #f8fff8 100%);
+}
+
+.premium-hero::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(46,125,50,.08);
+  border-radius: 40px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 17px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.65);
+  border: 1px solid rgba(46,125,50,.15);
+  box-shadow: 0 8px 25px rgba(46,125,50,.08);
+  color: #2e7d32;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  backdrop-filter: blur(12px);
+}
+
+.premium-hero h1 {
+  margin: 22px 0 10px;
+  font-size: clamp(48px, 7vw, 78px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -3px;
+  color: #185b20;
+  text-shadow: 0 8px 25px rgba(27,94,32,.10);
+}
+
+.premium-hero h1 span {
+  background: linear-gradient(135deg, #1b5e20, #43a047);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-typing {
+  min-height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #388e3c;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.typing-icon {
+  filter: drop-shadow(0 3px 5px rgba(0,0,0,.12));
+}
+
+.hero-description {
+  max-width: 760px !important;
+  margin: 25px auto 0 !important;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #527057 !important;
+}
+
+.premium-hero .hero-buttons {
+  margin-top: 32px;
+  gap: 14px;
+}
+
+.hero-main-btn,
+.hero-ai-btn {
+  min-width: 150px;
+  padding: 14px 23px !important;
+  border-radius: 14px !important;
+  font-size: 14px;
+}
+
+.hero-main-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: none !important;
+  background: linear-gradient(135deg, #1b5e20, #43a047) !important;
+  box-shadow: 0 10px 25px rgba(46,125,50,.25);
+}
+
+.hero-main-btn:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+  box-shadow: 0 16px 32px rgba(46,125,50,.32) !important;
+}
+
+.hero-ai-btn {
+  background: rgba(255,255,255,.7) !important;
+  backdrop-filter: blur(10px);
+}
+
+.hero-ai-btn:hover {
+  background: #ffffff !important;
+  transform: translateY(-4px) scale(1.03) !important;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+
+.hero-stats > div {
+  min-width: 145px;
+  padding: 14px 20px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.58);
+  border: 1px solid rgba(46,125,50,.10);
+  box-shadow: 0 10px 25px rgba(27,94,32,.08);
+  backdrop-filter: blur(14px);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.hero-stats > div:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(27,94,32,.14);
+}
+
+.hero-stats strong {
+  display: block;
+  color: #1b5e20;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.hero-stats span {
+  display: block;
+  margin-top: 3px;
+  color: #658067;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(1px);
+  background: rgba(76,175,80,.10);
+  animation: heroFloat 8s ease-in-out infinite;
+}
+
+.hero-orb-one {
+  width: 210px;
+  height: 210px;
+  top: 40px;
+  left: -90px;
+}
+
+.hero-orb-two {
+  width: 160px;
+  height: 160px;
+  right: -55px;
+  top: 35%;
+  animation-delay: -3s;
+}
+
+.hero-orb-three {
+  width: 90px;
+  height: 90px;
+  left: 18%;
+  bottom: 5%;
+  animation-delay: -5s;
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(18px, -20px, 0);
+  }
+}
+
+@media (max-width: 700px) {
+
+  .premium-hero {
+    min-height: 610px;
+    padding: 70px 18px 55px;
+  }
+
+  .premium-hero h1 {
+    font-size: 49px;
+    letter-spacing: -2px;
+  }
+
+  .hero-typing {
+    font-size: 16px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .hero-stats {
+    gap: 9px;
+    margin-top: 35px;
+  }
+
+  .hero-stats > div {
+    min-width: 105px;
+    padding: 12px 10px;
+  }
+
+  .hero-stats strong {
+    font-size: 17px;
+  }
+
+  .hero-stats span {
+    font-size: 9px;
+  }
+}
+
+
+/* =====================================================
+   PREMIUM SMART FEATURES
+   ===================================================== */
+
+.features {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(76, 175, 80, 0.08), transparent 28%),
+    radial-gradient(circle at 90% 80%, rgba(139, 195, 74, 0.08), transparent 28%);
+}
+
+.features > h2 {
+  position: relative;
+  display: inline-block;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.features > h2::after {
+  content: "";
+  display: block;
+  width: 55%;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #2e7d32, #81c784, #2e7d32);
+  transform-origin: center;
+  animation: featureLine 3s ease-in-out infinite;
+}
+
+.feature-grid {
+  perspective: 1000px;
+}
+
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(46, 125, 50, 0.10);
+  border-radius: 22px;
+
+  box-shadow:
+    0 10px 30px rgba(27, 94, 32, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.03);
+
+  transition:
+    transform 0.45s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease,
+    background 0.45s ease;
+}
+
+/* Animated glow behind card */
+.feature-card::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  right: -90px;
+  top: -90px;
+
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(76, 175, 80, 0.16),
+    transparent 70%
+  );
+
+  transition: transform 0.55s ease;
+  z-index: -1;
+}
+
+/* Bottom shine */
+.feature-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    #2e7d32,
+    #81c784,
+    #2e7d32
+  );
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s ease;
+}
+
+/* Desktop hover */
+@media (min-width: 701px) {
+  .feature-card:hover {
+    transform: translateY(-10px) rotateX(1deg);
+    border-color: rgba(46, 125, 50, 0.25);
+
+    box-shadow:
+      0 20px 45px rgba(27, 94, 32, 0.16),
+      0 8px 18px rgba(46, 125, 50, 0.08);
+
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  .feature-card:hover::before {
+    transform: scale(1.5);
+  }
+
+  .feature-card:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Card content */
+.feature-card h1,
+.feature-card h2,
+.feature-card h3 {
+  position: relative;
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease;
+}
+
+.feature-card p {
+  position: relative;
+  transition: color 0.35s ease;
+}
+
+@media (min-width: 701px) {
+  .feature-card:hover h1,
+  .feature-card:hover h2,
+  .feature-card:hover h3 {
+    transform: translateY(-2px);
+    color: #1b5e20;
+  }
+
+  .feature-card:hover p {
+    color: #4f6352;
+  }
+}
+
+/* Feature icons / emoji */
+.feature-card .feature-icon,
+.feature-card > div:first-child {
+  transition:
+    transform 0.45s cubic-bezier(.2,.8,.2,1),
+    filter 0.45s ease;
+}
+
+@media (min-width: 701px) {
+  .feature-card:hover .feature-icon,
+  .feature-card:hover > div:first-child {
+    transform: scale(1.12) rotate(-4deg);
+    filter: drop-shadow(0 5px 8px rgba(46, 125, 50, 0.18));
+  }
+}
+
+/* Feature cards entrance animation */
+.feature-card {
+  animation: featureAppear 0.7s ease both;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.05s; }
+.feature-card:nth-child(2) { animation-delay: 0.10s; }
+.feature-card:nth-child(3) { animation-delay: 0.15s; }
+.feature-card:nth-child(4) { animation-delay: 0.20s; }
+.feature-card:nth-child(5) { animation-delay: 0.25s; }
+.feature-card:nth-child(6) { animation-delay: 0.30s; }
+
+/* Soft floating animation */
+@keyframes featureAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes featureLine {
+  0%, 100% {
+    transform: scaleX(0.8);
+    opacity: 0.65;
+  }
+
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .feature-card {
+    border-radius: 18px;
+    box-shadow:
+      0 8px 24px rgba(27, 94, 32, 0.07);
+  }
+
+  .feature-card:active {
+    transform: scale(0.98);
+  }
+
+  .feature-card::after {
+    transform: scaleX(0.35);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .feature-card,
+  .feature-card::before,
+  .feature-card::after,
+  .feature-card h1,
+  .feature-card h2,
+  .feature-card h3 {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* =====================================================
+   PREMIUM WEATHER CARD
+   ===================================================== */
+
+.weather-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.94),
+      rgba(240,255,242,0.88)
+    ) !important;
+
+  border: 1px solid rgba(46,125,50,0.12);
+  border-radius: 26px !important;
+
+  box-shadow:
+    0 15px 40px rgba(27,94,32,0.10),
+    0 4px 12px rgba(0,0,0,0.04) !important;
+
+  transition:
+    transform 0.45s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+/* Soft atmospheric glow */
+.weather-card::before {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  top: -100px;
+  right: -70px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(129,199,132,0.28),
+    rgba(129,199,132,0)
+  );
+
+  z-index: -1;
+  animation: weatherGlow 5s ease-in-out infinite;
+}
+
+/* Bottom glow */
+.weather-card::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  bottom: -90px;
+  left: -70px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(76,175,80,0.14),
+    transparent 70%
+  );
+
+  z-index: -1;
+}
+
+@media (min-width: 701px) {
+  .weather-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(46,125,50,0.25);
+
+    box-shadow:
+      0 25px 55px rgba(27,94,32,0.16),
+      0 8px 20px rgba(46,125,50,0.08) !important;
+  }
+}
+
+/* Weather heading */
+.weather-top h2 {
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  transition: transform 0.35s ease;
+}
+
+.weather-top h3 {
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+@media (min-width: 701px) {
+  .weather-card:hover .weather-top h2 {
+    transform: translateY(-2px);
+  }
+}
+
+/* Temperature */
+.weather-temp {
+  font-weight: 900 !important;
+  letter-spacing: -2px;
+  text-shadow: 0 3px 12px rgba(46,125,50,0.12);
+  transition: transform 0.4s ease;
+}
+
+@media (min-width: 701px) {
+  .weather-card:hover .weather-temp {
+    transform: scale(1.04);
+  }
+}
+
+/* Weather information boxes */
+.weather-info {
+  gap: 14px !important;
+}
+
+.weather-box {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(245,255,246,0.96),
+      rgba(235,250,237,0.88)
+    ) !important;
+
+  border: 1px solid rgba(76,175,80,0.08);
+  border-radius: 15px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 5px 15px rgba(46,125,50,0.05);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.weather-box::before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  right: -30px;
+  border-radius: 50%;
+  background: rgba(129,199,132,0.12);
+}
+
+@media (min-width: 701px) {
+  .weather-box:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 10px 22px rgba(46,125,50,0.10);
+  }
+}
+
+.weather-box strong {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* Refresh button */
+.weather-card > button {
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.weather-card > button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+}
+
+@media (min-width: 701px) {
+  .weather-card > button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 18px rgba(46,125,50,0.22);
+  }
+
+  .weather-card > button:hover::after {
+    left: 140%;
+  }
+}
+
+@keyframes weatherGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .weather-card {
+    border-radius: 22px !important;
+    box-shadow:
+      0 12px 30px rgba(27,94,32,0.09) !important;
+  }
+
+  .weather-card:active {
+    transform: scale(0.985);
+  }
+
+  .weather-box:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .weather-card,
+  .weather-card::before,
+  .weather-card::after,
+  .weather-temp,
+  .weather-box,
+  .weather-card > button {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* =====================================================
+   PREMIUM SOIL HEALTH + IRRIGATION
+   ===================================================== */
+
+/* ---------- SOIL SECTION ---------- */
+
+.soil-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 5% 30%, rgba(76,175,80,.08), transparent 25%),
+    radial-gradient(circle at 95% 70%, rgba(139,195,74,.08), transparent 25%);
+}
+
+.soil-section > h2 {
+  font-weight: 850;
+  letter-spacing: -0.5px;
+}
+
+.soil-grid {
+  perspective: 1000px;
+}
+
+.soil-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  background: rgba(255,255,255,.88) !important;
+  border: 1px solid rgba(46,125,50,.10);
+  border-top: 4px solid #2e7d32 !important;
+  border-radius: 22px !important;
+
+  box-shadow:
+    0 12px 32px rgba(27,94,32,.09),
+    0 3px 10px rgba(0,0,0,.03) !important;
+
+  transition:
+    transform .4s cubic-bezier(.2,.8,.2,1),
+    box-shadow .4s ease,
+    border-color .4s ease;
+}
+
+.soil-card::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  right: -75px;
+  top: -75px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(129,199,132,.20),
+    transparent 70%
+  );
+
+  z-index: -1;
+  transition: transform .5s ease;
+}
+
+@media (min-width:701px) {
+  .soil-card:hover {
+    transform: translateY(-9px);
+    border-color: rgba(46,125,50,.22);
+
+    box-shadow:
+      0 22px 45px rgba(27,94,32,.15),
+      0 6px 16px rgba(46,125,50,.08) !important;
+  }
+
+  .soil-card:hover::before {
+    transform: scale(1.4);
+  }
+}
+
+.soil-icon {
+  display: inline-block;
+  transition:
+    transform .4s cubic-bezier(.2,.8,.2,1),
+    filter .4s ease;
+}
+
+@media (min-width:701px) {
+  .soil-card:hover .soil-icon {
+    transform: scale(1.16) rotate(-5deg);
+    filter: drop-shadow(0 5px 7px rgba(46,125,50,.16));
+  }
+}
+
+.soil-card h3 {
+  transition: color .3s ease;
+}
+
+.soil-card h1 {
+  font-weight: 850;
+  letter-spacing: -1px;
+  transition: transform .3s ease;
+}
+
+@media (min-width:701px) {
+  .soil-card:hover h3 {
+    color: #1b5e20;
+  }
+
+  .soil-card:hover h1 {
+    transform: scale(1.04);
+  }
+}
+
+.soil-status {
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.03);
+  transition: transform .3s ease;
+}
+
+.soil-card:hover .soil-status {
+  transform: translateY(-2px);
+}
+
+
+/* ---------- IRRIGATION ---------- */
+
+.irrigation-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.irrigation-section > h2 {
+  font-weight: 850;
+  letter-spacing: -.5px;
+}
+
+.irrigation-grid {
+  perspective: 1000px;
+}
+
+.irrigation-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  background: rgba(255,255,255,.90);
+  border: 1px solid rgba(46,125,50,.10);
+  border-top: 4px solid #2e7d32;
+  border-radius: 22px;
+
+  box-shadow:
+    0 12px 32px rgba(27,94,32,.08);
+
+  transition:
+    transform .4s cubic-bezier(.2,.8,.2,1),
+    box-shadow .4s ease;
+}
+
+.irrigation-card::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  right: -100px;
+  bottom: -100px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(76,175,80,.13),
+    transparent 70%
+  );
+
+  z-index: -1;
+}
+
+@media (min-width:701px) {
+  .irrigation-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 22px 45px rgba(27,94,32,.14);
+  }
+}
+
+/* Water / pump icons */
+.irrigation-card .soil-icon,
+.irrigation-card .irrigation-icon {
+  display: inline-block;
+  transition: transform .4s ease;
+}
+
+@media (min-width:701px) {
+  .irrigation-card:hover .soil-icon,
+  .irrigation-card:hover .irrigation-icon {
+    transform: scale(1.12);
+  }
+}
+
+/* Progress bars */
+.irrigation-card progress,
+.irrigation-card input[type="range"] {
+  accent-color: #2e7d32;
+}
+
+.irrigation-card input[type="range"] {
+  cursor: pointer;
+}
+
+/* Pump status */
+.irrigation-card .pump-status,
+.irrigation-card .status {
+  border-radius: 12px;
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+@media (min-width:701px) {
+  .irrigation-card:hover .pump-status,
+  .irrigation-card:hover .status {
+    transform: scale(1.02);
+  }
+}
+
+/* Buttons */
+.irrigation-card button {
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.irrigation-card button::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  top: 0;
+  left: -120%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.32),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+  transition: left .55s ease;
+}
+
+@media (min-width:701px) {
+  .irrigation-card button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 16px rgba(46,125,50,.20);
+  }
+
+  .irrigation-card button:hover::after {
+    left: 140%;
+  }
+}
+
+/* Select controls */
+.irrigation-card select {
+  transition:
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.irrigation-card select:focus {
+  outline: none;
+  border-color: rgba(46,125,50,.5);
+  box-shadow: 0 0 0 3px rgba(76,175,80,.10);
+}
+
+/* Mobile */
+@media (max-width:700px) {
+  .soil-card,
+  .irrigation-card {
+    border-radius: 18px !important;
+  }
+
+  .soil-card:active,
+  .irrigation-card:active {
+    transform: scale(.985);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce) {
+  .soil-card,
+  .soil-card *,
+  .irrigation-card,
+  .irrigation-card * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ===== FINAL AGRINOVA VISUAL FIX ===== */
+
+.irrigation-section {
+  background: linear-gradient(180deg, #f4fff6 0%, #e9f8ec 100%) !important;
+  padding: 75px 20px !important;
+}
+
+.irrigation-container {
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 22px !important;
+}
+
+.irrigation-card {
+  background: #ffffff !important;
+  border: 2px solid #d9efdd !important;
+  border-top: 5px solid #2e7d32 !important;
+  border-radius: 22px !important;
+  padding: 30px 20px !important;
+  box-shadow: 0 10px 30px rgba(46,125,50,.12) !important;
+  text-align: center !important;
+}
+
+.irrigation-card h3 {
+  color: #246b2b !important;
+  font-size: 18px !important;
+  margin: 14px 0 !important;
+}
+
+.irrigation-icon {
+  font-size: 48px !important;
+  display: block !important;
+  margin-bottom: 8px !important;
+}
+
+.moisture-value {
+  color: #1b5e20 !important;
+  font-size: 30px !important;
+  font-weight: 800 !important;
+}
+
+.moisture-bar {
+  height: 10px !important;
+  background: #dcefe0 !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  margin: 15px 0 !important;
+}
+
+.moisture-fill {
+  height: 100% !important;
+  background: #2e7d32 !important;
+  border-radius: 20px !important;
+}
+
+.pump-status {
+  padding: 12px !important;
+  border-radius: 12px !important;
+  margin: 15px 0 !important;
+  font-weight: 700 !important;
+}
+
+.irrigation-card button {
+  width: 100% !important;
+  background: #2e7d32 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 12px !important;
+  margin-top: 10px !important;
+  font-weight: 700 !important;
+}
+
+.irrigation-card select {
+  width: 100% !important;
+  padding: 11px !important;
+  border: 1px solid #cfe5d2 !important;
+  border-radius: 10px !important;
+  background: white !important;
+}
+
+.irrigation-info {
+  background: #effaf1 !important;
+  border-radius: 12px !important;
+  padding: 14px !important;
+  margin-top: 18px !important;
+  color: #35783b !important;
+}
+
+@media (max-width: 700px) {
+  .irrigation-section {
+    padding: 55px 15px !important;
+  }
+
+  .irrigation-container {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .irrigation-card {
+    padding: 25px 18px !important;
+  }
+}
+
+
+/* FINAL SECTION SPACING FIX */
+.crop-section {
+  padding-bottom: 25px !important;
+}
+
+.irrigation-section {
+  padding-top: 30px !important;
+}

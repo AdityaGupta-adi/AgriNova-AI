@@ -1,0 +1,88 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#eef7ee;
+  color:#222;
+}
+
+a{
+  text-decoration:none;
+  color:white;
+}
+.crop-recommendation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.crop-recommendation-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 80, 30, 0.10);
+  border: 1px solid #dcefe0;
+  text-align: left;
+}
+
+.crop-recommendation-card h4 {
+  font-size: 22px;
+  margin: 12px 0;
+}
+
+.crop-rank {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.crop-score span {
+  font-size: 28px;
+  font-weight: 800;
+  color: #247a35;
+}
+
+.crop-score small {
+  color: #666;
+}
+
+.crop-progress {
+  height: 9px;
+  background: #e1eee3;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0 15px;
+}
+
+.crop-progress-fill {
+  height: 100%;
+  background: #2e7d32;
+  border-radius: 10px;
+}
+
+.crop-recommendation-card p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.crop-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #e8f5e9;
+  color: #247a35;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .crop-recommendation-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
