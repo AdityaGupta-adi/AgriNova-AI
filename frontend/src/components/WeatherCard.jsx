@@ -6,97 +6,149 @@ import {
   FaTint,
   FaWind,
   FaMapMarkerAlt,
-  FaCloudRain
+  FaCloudRain,
 } from "react-icons/fa";
 
 export default function WeatherCard() {
   const [weather, setWeather] = useState(null);
-  const [city, setCity] = useState("Fetching location...");
+  const [city, setCity] = useState("Detecting location...");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     getWeather();
   }, []);
 
-  const getWeather = () => {
-    setLoading(true);
+  const fetchWeather = async (latitude, longitude, locationName = "") => {
+    try {
+      const weatherRes = await axios.get(
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation&daily=precipitation_probability_max&timezone=auto`
+      );
 
-    if (!navigator.geolocation) {
-      setCity("Location not supported");
-      setLoading(false);
-      return;
+      const current = weatherRes.data.current;
+      const daily = weatherRes.data.daily;
+
+      const weatherData = {
+        temperature: current.temperature_2m,
+        humidity: current.relative_humidity_2m,
+        wind: current.wind_speed_10m,
+        precipitation: current.precipitation,
+        rainProbability: daily?.precipitation_probability_max?.[0] ?? 0,
+      };
+
+      setWeather(weatherData);
+
+      if (locationName) {
+        setCity(locationName);
+      }
+
+      localStorage.setItem(
+        "agrinova-weather",
+        JSON.stringify({
+          weatherData,
+          city: locationName || "Current Location",
+          latitude,
+          longitude,
+          updatedAt: Date.now(),
+        })
+      );
+
+      window.dispatchEvent(new Event("agrinova-weather-updated"));
+      setError("");
+    } catch (err) {
+      console.error("Weather API error:", err);
+      setError("Unable to fetch weather data.");
     }
+  };
 
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        try {
+  const getWeather = async () => {
+    setLoading(true);
+    setError("");
+
+    // 1️⃣ Try browser GPS
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
           const { latitude, longitude } = position.coords;
 
-          const weatherRes = await axios.get(
-            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation&daily=precipitation_probability_max&timezone=auto&forecast_days=1`
-          );
+          try {
+            const geoRes = await axios.get(
+              `https://geocoding-api.open-meteo.com/v1/search?name=India&count=1&language=en&format=json`
+            );
 
-          const geoRes = await axios.get(
-            `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
-          );
+            const locationName =
+              geoRes.data?.results?.[0]?.name || "Current Location";
 
-          const current = weatherRes.data.current;
-          const daily = weatherRes.data.daily;
+            await fetchWeather(latitude, longitude, locationName);
+          } catch {
+            await fetchWeather(latitude, longitude, "Current Location");
+          }
 
-          const weatherData = {
-            temperature: current.temperature_2m,
-            humidity: current.relative_humidity_2m,
-            wind: current.wind_speed_10m,
-            precipitation: current.precipitation,
-            rainProbability: daily.precipitation_probability_max?.[0] ?? 0
-          };
+          setLoading(false);
+        },
+        async () => {
+          // 2️⃣ GPS failed → IP location fallback
+          try {
+            const ipRes = await axios.get("https://ipwho.is/");
 
-          setWeather(weatherData);
+            if (ipRes.data?.success && ipRes.data.latitude) {
+              const latitude = ipRes.data.latitude;
+              const longitude = ipRes.data.longitude;
 
-          const address = geoRes.data.address || {};
+              const locationName =
+                ipRes.data.city ||
+                ipRes.data.region ||
+                ipRes.data.country ||
+                "Nearby Location";
 
-          const locationName =
-            address.city ||
-            address.town ||
-            address.village ||
-            address.state ||
-            "Unknown Location";
+              await fetchWeather(latitude, longitude, locationName);
+              setLoading(false);
+              return;
+            }
 
-          setCity(locationName);
+            throw new Error("IP location unavailable");
+          } catch (err) {
+            console.error("IP location error:", err);
 
-          // Save weather data for Smart Irrigation
-          localStorage.setItem(
-            "agrinova_weather",
-            JSON.stringify({
-              ...weatherData,
-              city: locationName,
-              latitude,
-              longitude,
-              updatedAt: Date.now()
-            })
-          );
-
-          // Tell Smart Irrigation that new weather data is available
-          window.dispatchEvent(new Event("agrinova-weather-updated"));
-        } catch (err) {
-          console.error(err);
-          setCity("Weather unavailable");
+            // 3️⃣ Final fallback
+            await fetchWeather(28.6139, 77.209, "India");
+            setLoading(false);
+          }
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 8000,
+          maximumAge: 300000,
         }
+      );
+    } else {
+      // Browser does not support GPS
+      try {
+        const ipRes = await axios.get("https://ipwho.is/");
 
-        setLoading(false);
-      },
-      () => {
-        setCity("Permission denied");
-        setLoading(false);
+        if (ipRes.data?.success && ipRes.data.latitude) {
+          await fetchWeather(
+            ipRes.data.latitude,
+            ipRes.data.longitude,
+            ipRes.data.city || "Nearby Location"
+          );
+        } else {
+          await fetchWeather(28.6139, 77.209, "India");
+        }
+      } catch {
+        await fetchWeather(28.6139, 77.209, "India");
       }
-    );
+
+      setLoading(false);
+    }
   };
 
   if (loading) {
     return (
       <section className="weather-card">
         <div className="loading">
-          <h2 style={{ marginTop: "20px" }}>Loading Weather...</h2>
+          <h2>🌤️ Loading Weather...</h2>
+          <p>Detecting your location and weather conditions</p>
         </div>
       </section>
     );
@@ -105,8 +157,12 @@ export default function WeatherCard() {
   if (!weather) {
     return (
       <section className="weather-card">
-        <h2>Weather unavailable</h2>
-        <button onClick={getWeather}>Retry Weather</button>
+        <h2>🌦️ Weather temporarily unavailable</h2>
+        <p>{error || "Please try again."}</p>
+
+        <button onClick={getWeather}>
+          🔄 Retry Weather
+        </button>
       </section>
     );
   }
@@ -120,11 +176,13 @@ export default function WeatherCard() {
       viewport={{ once: true }}
     >
       <div className="weather-top">
-        <h2>🌦️ Live Weather</h2>
+      <div>
+          <h2>🌤️ Live Weather</h2>
 
-        <h3>
-          <FaMapMarkerAlt /> {city}
-        </h3>
+          <h3>
+            <FaMapMarkerAlt /> {city}
+          </h3>
+        </div>
       </div>
 
       <h1 className="weather-temp">
@@ -132,7 +190,6 @@ export default function WeatherCard() {
       </h1>
 
       <div className="weather-info">
-
         <div className="weather-box">
           <FaTint size={28} />
           <span>Humidity</span>
@@ -150,7 +207,6 @@ export default function WeatherCard() {
           <span>Rain Probability</span>
           <strong>{weather.rainProbability}%</strong>
         </div>
-
       </div>
 
       <div className="weather-rain-status">
@@ -164,7 +220,6 @@ export default function WeatherCard() {
       <button onClick={getWeather}>
         🔄 Refresh Weather
       </button>
-
     </motion.section>
   );
 }

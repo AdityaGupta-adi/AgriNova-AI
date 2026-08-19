@@ -3708,3 +3708,494 @@ footer {
 .irrigation-section {
   padding-top: 30px !important;
 }
+
+/* =========================================================
+   AGRINOVA AI — PREMIUM UI UPGRADE
+   ========================================================= */
+
+:root {
+  --agri-green: #16a34a;
+  --agri-green-dark: #15803d;
+  --agri-green-light: #dcfce7;
+  --agri-bg: #f5faf6;
+  --agri-card: rgba(255, 255, 255, 0.88);
+  --agri-text: #10251a;
+  --agri-muted: #64756b;
+  --agri-border: rgba(22, 163, 74, 0.12);
+  --agri-shadow: 0 18px 45px rgba(15, 60, 35, 0.10);
+  --agri-radius: 22px;
+}
+
+/* ---------- GLOBAL ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(22,163,74,.08), transparent 28%),
+    radial-gradient(circle at 90% 20%, rgba(34,197,94,.06), transparent 25%),
+    var(--agri-bg);
+  color: var(--agri-text);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  transition: all .25s ease;
+}
+
+/* ---------- NAVBAR ---------- */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(10, 55, 30, .92);
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 8px 30px rgba(0,0,0,.10);
+}
+
+.logo {
+  transition: transform .25s ease;
+}
+
+.logo:hover {
+  transform: translateY(-1px);
+}
+
+.nav-links a {
+  position: relative;
+  transition: color .25s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 0;
+  height: 2px;
+  border-radius: 10px;
+  background: #86efac;
+  transition: width .25s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ---------- HERO ---------- */
+
+.hero-premium-hero,
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-premium-hero::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: -120px;
+  top: -120px;
+  border-radius: 50%;
+  background: rgba(74, 222, 128, .12);
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.hero-premium-hero::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  left: -100px;
+  bottom: -120px;
+  border-radius: 50%;
+  background: rgba(22, 163, 74, .08);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: var(--agri-green-light);
+  color: var(--agri-green-dark);
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 8px 25px rgba(22,163,74,.10);
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.primary-hero-main-btn,
+.secondary-hero-ai-btn,
+.primary-hero-main-btn *,
+.secondary-hero-ai-btn * {
+  transition: all .25s ease;
+}
+
+.primary-hero-main-btn:hover,
+.secondary-hero-ai-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* ---------- FEATURE CARDS ---------- */
+
+.features {
+  display: grid;
+  gap: 22px;
+}
+
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--agri-border);
+  border-radius: var(--agri-radius);
+  background: var(--agri-card);
+  box-shadow: var(--agri-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease,
+    border-color .28s ease;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(34,197,94,.08),
+    transparent 45%
+  );
+  pointer-events: none;
+}
+
+.feature-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 25px 55px rgba(15,60,35,.15);
+  border-color: rgba(22,163,74,.25);
+}
+
+/* ---------- WEATHER ---------- */
+
+.weather-card,
+.weather-box {
+  border: 1px solid var(--agri-border);
+  border-radius: var(--agri-radius);
+  background: var(--agri-card);
+  box-shadow: var(--agri-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.weather-card:hover,
+.weather-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 50px rgba(15,60,35,.14);
+}
+
+.weather-temp {
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.weather-rain-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #effdf4;
+  color: #15803d;
+  font-weight: 700;
+}
+ /* ---------- CROP RECOMMENDATION ---------- */
+
+.crop-recommendation-card,
+.crop-section,
+.soil-card {
+  border-radius: var(--agri-radius);
+}
+
+.crop-recommendation-card {
+  background: var(--agri-card);
+  border: 1px solid var(--agri-border);
+  box-shadow: var(--agri-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.crop-recommendation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 55px rgba(15,60,35,.14);
+}
+
+.crop-button,
+.irrigation-button {
+  border: none;
+  border-radius: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.crop-button:hover,
+.irrigation-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(22,163,74,.18);
+}
+
+.crop-result {
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(220,252,231,.85),
+    rgba(255,255,255,.95)
+  );
+  border: 1px solid rgba(22,163,74,.15);
+}
+
+/* ---------- SOIL ---------- */
+
+.soil-card {
+  background: var(--agri-card);
+  border: 1px solid var(--agri-border);
+  box-shadow: var(--agri-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.soil-status {
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-weight: 700;
+}
+
+.soil-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+/* ---------- IRRIGATION ---------- */
+
+.irrigation-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--agri-card);
+  border: 1px solid var(--agri-border);
+  border-radius: var(--agri-radius);
+  box-shadow: var(--agri-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.irrigation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 55px rgba(15,60,35,.14);
+}
+
+.moisture-bar {
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.moisture-fill {
+  border-radius: inherit;
+  transition: width .7s ease;
+}
+
+.crop-progress {
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.crop-progress-fill {
+  border-radius: inherit;
+  transition: width .7s ease;
+}
+
+/* ---------- AI CHAT ---------- */
+
+.ai-chat,
+.chat-box {
+  border: 1px solid var(--agri-border);
+  border-radius: var(--agri-radius);
+  background: rgba(255,255,255,.90);
+  box-shadow: var(--agri-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.chat-box {
+  overflow: hidden;
+}
+
+.chat-item {
+  border-radius: 16px;
+  transition: background .2s ease;
+}
+
+.chat-item:hover {
+  background: rgba(22,163,74,.05);
+}
+
+.ai-message {
+  border-radius: 16px 16px 16px 5px;
+  background: #ecfdf3;
+  color: #123c24;
+}
+
+.user-message {
+  border-radius: 16px 16px 5px 16px;
+  background: #166534;
+  color: white;
+}
+
+.copy-btn {
+  border-radius: 9px;
+  transition: all .2s ease;
+}
+
+.copy-btn:hover {
+  transform: scale(1.04);
+}
+
+/* ---------- QUICK QUESTIONS ---------- */
+
+.quick-questions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.quick-questions button {
+  border: 1px solid rgba(22,163,74,.16);
+  border-radius: 999px;
+  background: #f0fdf4;
+  color: #166534;
+  padding: 8px 13px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.quick-questions button:hover {
+  background: #dcfce7;
+  transform: translateY(-2px);
+}
+
+/* ---------- FOOTER ---------- */
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  margin-top: 60px;
+  background: #092b18;
+  color: rgba(255,255,255,.88);
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: -140px;
+  top: -160px;
+  border-radius: 50%;
+  background: rgba(74,222,128,.08);
+}
+
+.footer-divider {
+  height: 1px;
+  background: rgba(255,255,255,.12);
+}
+
+.footer-text {
+  color: rgba(255,255,255,.65);
+}
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .feature-card,
+  .weather-card,
+  .crop-recommendation-card,
+  .soil-card,
+  .irrigation-card {
+    border-radius: 18px;
+  }
+
+  .quick-questions {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 5px;
+  }
+
+  .quick-questions button {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+
+  :root {
+    --agri-radius: 17px;
+  }
+
+  .hero-badge {
+    font-size: 12px;
+  }
+
+  .feature-card:hover,
+  .weather-card:hover,
+  .crop-recommendation-card:hover,
+  .soil-card:hover,
+  .irrigation-card:hover {
+    transform: none;
+  }
+}
+
+/* ---------- ACCESSIBILITY ---------- */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(34,197,94,.35);
+  outline-offset: 3px;
+}
+
