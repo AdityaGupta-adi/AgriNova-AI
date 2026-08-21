@@ -1,5 +1,6 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+
 import {
   FaRobot,
   FaMicrophone,
@@ -10,11 +11,16 @@ import {
   FaVolumeUp,
   FaLeaf,
   FaSeedling,
-  FaTint,
   FaBug,
   FaHeartbeat,
+  FaTint,
+  FaCloudSun,
+  FaLightbulb,
   FaCheckCircle,
+  FaShieldAlt,
+  FaChevronRight,
 } from "react-icons/fa";
+
 import "./AIChatbot.css";
 
 const genAI = new GoogleGenerativeAI(
@@ -22,6 +28,11 @@ const genAI = new GoogleGenerativeAI(
 );
 
 const quickQuestions = [
+  {
+    icon: <FaLeaf />,
+    label: "Crop Advice",
+    question: "Which crop is suitable for my soil and weather conditions?",
+  },
   {
     icon: <FaTint />,
     label: "Irrigation",
@@ -42,10 +53,28 @@ const quickQuestions = [
     label: "Disease",
     question: "How can I identify plant diseases from symptoms?",
   },
+];
+
+const smartTopics = [
   {
     icon: <FaLeaf />,
-    label: "Crop Advice",
-    question: "Which crop is suitable for my soil and weather conditions?",
+    title: "Crop Planning",
+    text: "Choose suitable crops according to soil, season and climate.",
+  },
+  {
+    icon: <FaTint />,
+    title: "Smart Irrigation",
+    text: "Get practical watering guidance for healthier crops.",
+  },
+  {
+    icon: <FaSeedling />,
+    title: "Soil & Fertilizer",
+    text: "Improve nutrients and soil management with simple steps.",
+  },
+  {
+    icon: <FaBug />,
+    title: "Pest & Disease",
+    text: "Understand symptoms and safer prevention methods.",
   },
 ];
 
@@ -58,7 +87,82 @@ export default function AIChatbot() {
   const [chatHistory, setChatHistory] = useState([]);
   const [followUps, setFollowUps] = useState([]);
 
+  const [farmContext, setFarmContext] = useState({
+    crop: "",
+    temperature: "",
+    humidity: "",
+    weather: "",
+    soil: "",
+  });
+
+  const [contextEnabled, setContextEnabled] = useState(true);
+
+  const getFarmContextText = () => {
+    if (!contextEnabled) return "";
+
+    const context = [];
+
+    if (farmContext.crop) {
+      context.push(`Crop: ${farmContext.crop}`);
+    }
+
+    if (farmContext.temperature) {
+      context.push(`Temperature: ${farmContext.temperature}°C`);
+    }
+
+    if (farmContext.humidity) {
+      context.push(`Humidity: ${farmContext.humidity}%`);
+    }
+
+    if (farmContext.weather) {
+      context.push(`Weather: ${farmContext.weather}`);
+    }
+
+    if (farmContext.soil) {
+      context.push(`Soil: ${farmContext.soil}`);
+    }
+
+    return context.length
+      ? `\n\nCURRENT FARM CONTEXT:\n${context.join("\n")}`
+      : "";
+  };
+
+  const [showTopics, setShowTopics] = useState(false);
+
   const recognitionRef = useRef(null);
+
+  useEffect(() => {
+    const handleWeatherUpdate = (event) => {
+      const weather = event.detail;
+
+      if (!weather) return;
+
+      setFarmContext((previous) => ({
+        ...previous,
+        temperature:
+          weather.temperature ?? previous.temperature,
+        humidity:
+          weather.humidity ?? previous.humidity,
+        weather:
+          weather.rainProbability !== undefined
+            ? `Rain probability ${weather.rainProbability}%`
+            : previous.weather,
+      }));
+    };
+
+    window.addEventListener(
+      "agrinova-weather-updated",
+      handleWeatherUpdate
+    );
+
+    return () => {
+      window.removeEventListener(
+        "agrinova-weather-updated",
+        handleWeatherUpdate
+      );
+    };
+  }, []);
+
 
   const startListening = () => {
     const SpeechRecognition =
@@ -118,7 +222,117 @@ export default function AIChatbot() {
     window.speechSynthesis.speak(speech);
   };
 
-  const copyAnswer = async (text = answer) => {
+
+
+  const getInsightData = () => {
+    const insights = [];
+
+    if (farmContext.temperature) {
+      insights.push({
+        icon: "🌡️",
+        label: "Temperature",
+        value: `${farmContext.temperature}°C`,
+      });
+    }
+
+    if (farmContext.humidity) {
+      insights.push({
+        icon: "💧",
+        label: "Humidity",
+        value: `${farmContext.humidity}%`,
+      });
+    }
+
+    if (farmContext.weather) {
+      insights.push({
+        icon: "🌦️",
+        label: "Weather",
+        value: farmContext.weather,
+      });
+    }
+
+    if (farmContext.crop) {
+      insights.push({
+        icon: "🌱",
+        label: "Crop",
+        value: farmContext.crop,
+      });
+    }
+
+    if (farmContext.soil) {
+      insights.push({
+        icon: "🌍",
+        label: "Soil",
+        value: farmContext.soil,
+      });
+    }
+
+    return insights.slice(0, 4);
+  };
+
+  const getWeatherType = (weather) => {
+  if (!weather) return "";
+
+  const value = weather.toLowerCase();
+
+  if (value.includes("storm")) return "Stormy";
+  if (value.includes("fog")) return "Foggy";
+  if (value.includes("wind")) return "Windy";
+
+  const match = value.match(/(\\d+)\\s*%/);
+  if (match) {
+    const probability = Number(match[1]);
+    if (probability >= 70) return "Rainy";
+    if (probability >= 40) return "Cloudy";
+    return "Sunny";
+  }
+
+  if (value.includes("rain")) return "Rainy";
+  if (value.includes("cloud")) return "Cloudy";
+  if (value.includes("sun")) return "Sunny";
+
+  return "";
+};
+
+const getRecommendationType = (text) => {
+    const value = text.toLowerCase();
+
+    if (
+      value.includes("irrigat") ||
+      value.includes("water")
+    ) {
+      return "💧 Irrigation";
+    }
+
+    if (
+      value.includes("crop") ||
+      value.includes("sowing") ||
+      value.includes("harvest")
+    ) {
+      return "🌱 Crop Advice";
+    }
+
+    if (
+      value.includes("fertilizer") ||
+      value.includes("nutrient") ||
+      value.includes("nitrogen")
+    ) {
+      return "🌿 Soil & Fertilizer";
+    }
+
+    if (
+      value.includes("pest") ||
+      value.includes("insect") ||
+      value.includes("fungus") ||
+      value.includes("disease")
+    ) {
+      return "🦠 Plant Health";
+    }
+
+    return "🤖 Farming Guidance";
+  };
+
+  const copyAnswer = async (text) => {
     if (!text) return;
 
     try {
@@ -150,12 +364,12 @@ export default function AIChatbot() {
       if (index >= text.length) {
         clearInterval(interval);
       }
-    }, 8);
+    }, 12);
   };
 
   const extractFollowUps = (text) => {
     const matches = text.match(
-      /(?:FOLLOW[- ]?UPS?|Follow[- ]up questions?)\s*:?\s*((?:\n|.)*)/i
+      /(?:FOLLOW[- ]?UP|FOLLOW[- ]?UP QUESTIONS?)\s*:?\s*((?:\n|.)*)/i
     );
 
     if (!matches) return [];
@@ -164,7 +378,7 @@ export default function AIChatbot() {
       .split("\n")
       .map((item) =>
         item
-          .replace(/^[\s\d\-\*\•\)\.]+/, "")
+          .replace(/^[\s\d\-•*.)]+/, "")
           .trim()
       )
       .filter(Boolean)
@@ -190,9 +404,7 @@ export default function AIChatbot() {
       });
 
       const result = await model.generateContent(`
-You are AgriNova AI, a professional farmer-friendly agricultural assistant.
-
-Your goal is to provide practical, safe and easy-to-understand farming guidance.
+You are AgriNova AI, a professional farmer-friendly agricultural assistant.Your goal is to provide practical, safe and easy-to-understand farming guidance.
 
 Answer in SIMPLE ENGLISH.
 
@@ -201,80 +413,65 @@ IMPORTANT RESPONSE FORMAT:
 🌱 Problem:
 Give the main problem in one short sentence.
 
-🔍 Possible Causes:
+🔎 Possible Causes:
 - Give 2 to 4 likely causes.
 - Do not claim certainty without enough information.
-
 🛠️ What To Do:
 1. Give the most useful action first.
 2. Give simple practical steps.
 3. Mention watering, soil, pests, nutrients or weather only when relevant.
 
-🛡️ Prevention:
+🌿 Prevention:
 - Give 2 or 3 simple prevention tips.
 
 ⚠️ Warning:
 Mention when the farmer should stop treatment or contact a local agriculture expert.
-
 👨‍🌾 Farmer Tip:
 Give one highly practical final tip.
+
 RULES:
-- Keep the answer concise.
+- Keep the answer concise and farmer-friendly.
 - Use short bullet points.
+- Use simple English that is easy to understand.
 - Never invent sensor readings, weather data or scientific facts.
-- For disease questions, clearly say that visual symptoms alone cannot confirm a diagnosis.
-- For pesticide or fertilizer advice, tell the farmer to follow the product label and local agricultural guidance.
+- For disease questions, clearly say that symptoms alone cannot confirm a diagnosis.
+- For pesticides or fertilizers, advise following the product label and local agricultural guidance.
 - Never recommend dangerous chemical mixtures.
 - If important information is missing, ask ONE short follow-up question.
-- If unrelated to agriculture, politely say that AgriNova AI is primarily designed for farming assistance.
-
-Do NOT include a separate FOLLOW-UPS heading.
+- If the question is unrelated to agriculture, politely say that AgriNova AI is mainly designed for farming assistance.
 
 Farmer Question:
 ${currentQuestion}
+
+${getFarmContextText()}
       `);
 
       const response = await result.response;
-      const cleanText = response.text().trim();
+      const text = response.text().trim();
 
-      const extracted = extractFollowUps(cleanText);
-
-      const finalText = cleanText
-        .replace(
-          /(?:FOLLOW[- ]?UPS?|Follow[- ]up questions?)\s*:?\s*((?:\n|.)*)/i,
-          ""
-        )
-        .trim();
-
-      setAnswer(finalText);
-      setFollowUps(extracted);
-
-      typeWriter(finalText);
+      setAnswer(text);
 
       setChatHistory((previous) => [
         ...previous,
         {
           question: currentQuestion,
-          answer: finalText,
+          answer: text,
         },
       ]);
 
-      speakAnswer(finalText);
-
+      speakAnswer(text);
+      
     } catch (error) {
-      console.error(error);
+      console.error("Gemini Error:", error);
 
       const errorMessage =
         "I could not connect to Gemini AI right now. Please check your internet connection and Gemini API key.";
 
       setAnswer(errorMessage);
-      typeWriter(errorMessage);
-
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <section className="ai-chat">
 
@@ -321,6 +518,127 @@ ${currentQuestion}
 
       </div>
 
+      <div className="farm-context-panel">
+
+        <div className="farm-context-header">
+
+          <div>
+            <strong>🌱 Farm Context</strong>
+            <small>Give AI more information about your farm</small>
+          </div>
+
+          <button
+            className={`context-toggle ${
+              contextEnabled ? "active" : ""
+            }`}
+            onClick={() =>
+              setContextEnabled(!contextEnabled)
+            }
+          >
+            {contextEnabled ? "ON" : "OFF"}
+          </button>
+
+        </div>
+
+        {contextEnabled && (
+          <div className="farm-context-grid">
+
+            <select
+                  value={farmContext.crop}
+                  onChange={(e) =>
+                    setFarmContext({
+                      ...farmContext,
+                      crop: e.target.value,
+                    })
+                  }
+                >
+                  <option value="">🌱 Select Crop</option>
+                  <option value="Wheat">🌾 Wheat</option>
+                  <option value="Rice">🌾 Rice</option>
+                  <option value="Maize">🌽 Maize</option>
+                  <option value="Sugarcane">🎋 Sugarcane</option>
+                  <option value="Cotton">🌿 Cotton</option>
+                  <option value="Potato">🥔 Potato</option>
+                  <option value="Tomato">🍅 Tomato</option>
+                  <option value="Mustard">🌼 Mustard</option>
+                  <option value="Pulses">🌱 Pulses</option>
+                  <option value="Other">🌿 Other</option>
+                </select>
+
+            <input
+                  type="number"
+                  placeholder="🌡️ Temperature °C"
+                  min="-10"
+                  max="60"
+                  step="0.1"
+                  value={farmContext.temperature}
+                  onChange={(e) =>
+                    setFarmContext({
+                      ...farmContext,
+                      temperature: e.target.value,
+                    })
+                  }
+                />
+
+            <input
+                  type="number"
+                  placeholder="💧 Humidity %"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value={farmContext.humidity}
+                  onChange={(e) =>
+                    setFarmContext({
+                      ...farmContext,
+                      humidity: e.target.value,
+                    })
+                  }
+                />
+
+            <select
+                  value={getWeatherType(farmContext.weather)}
+                  onChange={(e) =>
+                    setFarmContext({
+                      ...farmContext,
+                      weather: e.target.value,
+                    })
+                  }
+                >
+                  <option value="">🌦️ Select Weather</option>
+                  <option value="Sunny">☀️ Sunny</option>
+                  <option value="Cloudy">☁️ Cloudy</option>
+                  <option value="Rainy">🌧️ Rainy</option>
+                  <option value="Partly Cloudy">⛅ Partly Cloudy</option>
+                  <option value="Stormy">⛈️ Stormy</option>
+                  <option value="Foggy">🌫️ Foggy</option>
+                  <option value="Windy">💨 Windy</option>
+                </select>
+
+            <select
+                  value={farmContext.soil}
+                  onChange={(e) =>
+                    setFarmContext({
+                      ...farmContext,
+                      soil: e.target.value,
+                    })
+                  }
+                >
+                  <option value="">🌍 Select Soil Type</option>
+                  <option value="Loamy Soil">🌱 Loamy Soil</option>
+                  <option value="Clay Soil">🟤 Clay Soil</option>
+                  <option value="Sandy Soil">🏜️ Sandy Soil</option>
+                  <option value="Silty Soil">🌾 Silty Soil</option>
+                  <option value="Peaty Soil">🌿 Peaty Soil</option>
+                  <option value="Black Soil">⚫ Black Soil</option>
+                  <option value="Red Soil">🔴 Red Soil</option>
+                  <option value="Alluvial Soil">🌱 Alluvial Soil</option>
+                </select>
+
+          </div>
+        )}
+
+      </div>
+
       <div className="quick-section">
 
         <div className="quick-title">
@@ -331,7 +649,6 @@ ${currentQuestion}
         <div className="quick-questions">
 
           {quickQuestions.map((item, index) => (
-
             <button
               key={index}
               className="quick-chip"
@@ -341,15 +658,12 @@ ${currentQuestion}
               }}
               disabled={loading}
             >
-
               <span className="quick-chip-icon">
                 {item.icon}
               </span>
 
               <span>{item.label}</span>
-
             </button>
-
           ))}
 
         </div>
@@ -357,7 +671,6 @@ ${currentQuestion}
       </div>
 
       <div className="chat-area">
-
         {chatHistory.length === 0 && !loading ? (
 
           <div className="empty-ai-state">
@@ -374,10 +687,10 @@ ${currentQuestion}
             </p>
 
             <div className="empty-suggestions">
-              <span>🌱 Crop advice</span>
+              <span>🌱 Crop Advice</span>
               <span>💧 Irrigation</span>
-              <span>🪲 Pest control</span>
-              <span>🌿 Plant health</span>
+              <span>🐛 Pest Control</span>
+              <span>🌿 Plant Health</span>
             </div>
 
           </div>
@@ -386,7 +699,10 @@ ${currentQuestion}
 
           chatHistory.map((chat, index) => (
 
-            <div className="chat-item" key={index}>
+            <div
+              className="chat-item"
+              key={index}
+            >
 
               <div className="message-row user-row">
 
@@ -395,7 +711,8 @@ ${currentQuestion}
                 </div>
 
                 <div className="message user-message">
-     <div className="message-label">
+
+                  <div className="message-label">
                     You
                   </div>
 
@@ -425,28 +742,79 @@ ${currentQuestion}
 
                   </div>
 
-                  <p>
-                    {index === chatHistory.length - 1
-                      ? typingText || chat.answer
-                      : chat.answer}
-                  </p>
+                  <div className="ai-recommendation-badge">
+                    {getRecommendationType(chat.answer)}
+                  </div>
+
+                  {getInsightData().length > 0 && (
+                    <div className="ai-insight-card">
+
+                      <div className="ai-insight-header">
+                        <div>
+                          <strong>
+                            ✨ Smart Farm Insight
+                          </strong>
+
+                          <small>
+                            Based on your current farm context
+                          </small>
+                        </div>
+
+                        <span>
+                          {getRecommendationType(chat.answer)}
+                        </span>
+                      </div>
+
+                      <div className="ai-insight-grid">
+
+                        {getInsightData().map(
+                          (item, insightIndex) => (
+                            <div
+                              className="ai-insight-item"
+                              key={insightIndex}
+                            >
+                              <span className="ai-insight-icon">
+                                {item.icon}
+                              </span>
+
+                              <div>
+                                <small>
+                                  {item.label}
+                                </small>
+
+                                <strong>
+                                  {item.value}
+                                </strong>
+                              </div>
+                            </div>
+                          )
+                        )}
+
+                      </div>
+
+                    </div>
+                  )}
+
+                  <p>{chat.answer}</p>
 
                   <div className="message-actions">
 
                     <button
-                      onClick={() => copyAnswer(chat.answer)}
-                      title="Copy answer"
+                      onClick={() =>
+                        copyAnswer(chat.answer)
+                      }
                     >
                       <FaCopy />
-                      Copy
+                      <span>Copy</span>
                     </button>
 
                     <button
-                      onClick={() => speakAnswer(chat.answer)}
-                      title="Read answer"
+                      onClick={() =>
+                        speakAnswer(chat.answer)
+                      }
                     >
                       <FaVolumeUp />
-                      Listen
+                      <span>Listen</span>
                     </button>
 
                   </div>
@@ -460,7 +828,6 @@ ${currentQuestion}
           ))
 
         )}
-
         {loading && (
 
           <div className="message-row ai-row">
@@ -495,31 +862,6 @@ ${currentQuestion}
 
       </div>
 
-      {!loading && followUps.length > 0 && (
-
-        <div className="follow-up-section">
-
-          <div className="follow-up-title">
-            🌱 Continue the conversation
-          </div>
-
-          <div className="follow-up-buttons">
-
-            {followUps.map((item, index) => (
-<button
-                key={index}
-                onClick={() => askAI(item)}
-              >
-                {item}
-              </button>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      )}
 
       <div className="ai-input-wrapper">
 
@@ -539,17 +881,17 @@ ${currentQuestion}
             rows="1"
             value={question}
             placeholder="Ask anything about farming..."
-            onChange={(e) => setQuestion(e.target.value)}
+            onChange={(e) =>
+              setQuestion(e.target.value)
+            }
             onKeyDown={(e) => {
 
               if (
                 e.key === "Enter" &&
                 !e.shiftKey
               ) {
-
                 e.preventDefault();
                 askAI();
-
               }
 
             }}
@@ -579,7 +921,9 @@ ${currentQuestion}
             <button
               className="send-button"
               onClick={() => askAI()}
-              disabled={!question.trim() || loading}
+              disabled={
+                !question.trim() || loading
+              }
             >
 
               {loading ? (
@@ -593,7 +937,6 @@ ${currentQuestion}
           </div>
 
         </div>
-
         <div className="input-hint">
 
           <span>
@@ -601,20 +944,27 @@ ${currentQuestion}
           </span>
 
           <span>
-            <FaMicrophone /> Voice supported
+            <FaMicrophone />
+            Voice supported
           </span>
 
         </div>
 
       </div>
 
+
       {chatHistory.length > 0 && (
 
         <div className="chat-footer-actions">
 
           <button onClick={clearChat}>
+
             <FaTrash />
-            Clear Conversation
+
+            <span>
+              Clear Conversation
+            </span>
+
           </button>
 
         </div>
@@ -624,4 +974,3 @@ ${currentQuestion}
     </section>
   );
 }
-
